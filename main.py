@@ -1,6 +1,8 @@
 from turtle import *
 from Paddle import *
-
+from ball import Ball
+from time import *
+ball=Ball()
 screen = Screen()
 screen.bgcolor("black")
 screen.setup(800, 600)
@@ -17,5 +19,9 @@ screen.onkey(l_paddle.go_up, "w")
 screen.onkey(l_paddle.go_down, "s")
 game_on = True
 while game_on:
+    sleep(0.1)
     screen.update()
+    ball.move()
+    if ball.ycor()>280 or ball.ycor()<-280:
+        ball.bounce()
 screen.exitonclick()
